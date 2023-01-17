@@ -1,0 +1,30 @@
+Parking 	+ Lista plazas
+		+
+
+Clientes 	+ Nombre
+		+ Vehiculo
+		+ Dni
+		+ Saldo
+		  -> Abonados
+			+ Plaza
+		
+	
+Ticket		+ Matricula vehiculo
+		+ Fecha deposito
+		+ ID Plaza
+		+ PIN unico (6 digitos)
+
+Vehiculos 	+ Tipo Puede ser Turismo, motos, movilidadReducida
+		+ Matricula
+
+Plaza		+ ID Plaza
+		+ Tipo puede ser de turismo, motos o movilidadReducida
+		+ Tarifa
+		+ Puede estar ocupada o no (bool)
+		+ Puede estar ocupada por un abonado o no (bool)
+===========================================================
+Al principio el programa selecciona entre dos zonas
+
+Subsistema = 2 zonas
+	- Zona Clientes
+	- Zona Administracion
