@@ -1,14 +1,18 @@
 Parking 	+ Lista plazas
-		+
 
-Clientes 	+ Nombre
-		+ Vehiculo
-		+ Dni
-		+ Saldo
+Clientes 	+ Vehiculo
 		  -> Abonados
 			+ Plaza
-		
-	
+			+ Dni
+			+ Nombre
+			+ Apellidos
+			+ Abono
+			+ Nº tarjeta
+
+Abono		+ Fecha activacion
+		+ Fecha cancelacion
+		+ Tipo
+
 Ticket		+ Matricula vehiculo
 		+ Fecha deposito
 		+ ID Plaza
@@ -23,8 +27,10 @@ Plaza		+ ID Plaza
 		+ Puede estar ocupada o no (bool)
 		+ Puede estar ocupada por un abonado o no (bool)
 ===========================================================
-Al principio el programa selecciona entre dos zonas
+Al principio el programa selecciona entre dos subsistemas
 
 Subsistema = 2 zonas
-	- Zona Clientes
+	- Zona Clientes 		
 	- Zona Administracion
+
+Cada subsistema tendra unas acciones u otras
