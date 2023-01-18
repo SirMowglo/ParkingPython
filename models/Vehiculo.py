@@ -1,8 +1,7 @@
 class Vehiculo:
-    def __init__(self, matricula, tipo, cliente):
+    def __init__(self, matricula, tipo):
         self._matricula = matricula
         self._tipo = tipo
-        self._cliente = cliente
 
     # GETTERS Y SETTERS
     @property

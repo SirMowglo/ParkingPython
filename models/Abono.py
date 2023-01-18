@@ -3,16 +3,17 @@ import datetime
 
 class Abono:
     def __init__(self, tipo):
-        self._f_activacion = datetime.datetime.now()
+        self._f_activacion = datetime.datetime.now()\
+            .strftime("%Y-%m-%d")
         self._tipo = tipo
         if tipo == 'mensual':
-            self._f_cancelacion = self._f_activacion + datetime.timedelta(days=30)
+            self._f_cancelacion = (self._f_activacion + datetime.timedelta(days=30)).strftime("%Y-%m-%d")
         elif tipo == 'trimestral':
-            self._f_cancelacion = self._f_activacion + datetime.timedelta(days=90)
+            self._f_cancelacion = (self._f_activacion + datetime.timedelta(days=90)).strftime("%Y-%m-%d")
         elif tipo == 'semestral':
-            self._f_cancelacion = self._f_activacion + datetime.timedelta(days=180)
+            self._f_cancelacion = (self._f_activacion + datetime.timedelta(days=180)).strftime("%Y-%m-%d")
         elif tipo == 'anual':
-            self._f_cancelacion = self._f_activacion + datetime.timedelta(days=360)
+            self._f_cancelacion = (self._f_activacion + datetime.timedelta(days=360)).strftime("%Y-%m-%d")
 
     # GETTERS Y SETTERS
     @property
