@@ -1,0 +1,2 @@
+class ZonaAdmin:
+    pass

@@ -20,3 +20,10 @@ class Parking:
     @lista_plazas.setter
     def lista_plazas(self, lista_plazas):
         self._lista_plazas = lista_plazas
+
+# METODOS
+    def __str__(self):
+        plazas = ''
+        for i in self._lista_plazas:
+            plazas = plazas / '#'
+        return plazas
