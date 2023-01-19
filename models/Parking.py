@@ -10,7 +10,7 @@ class Parking:
         for i in range(0, math.trunc(n_plazas * 0.15)):
             self.__lista_plazas.append(Plaza(len(self.__lista_plazas) + 1, 'motocicleta', False, None))
         for i in range(0, math.trunc(n_plazas * 0.15)):
-            self.__lista_plazas.append(Plaza(len(self.__lista_plazas) + 1, 'm_reducida', False, None))
+            self.__lista_plazas.append(Plaza(len(self.__lista_plazas) + 1, 'movilidad reducida', False, None))
 
     # GETTERS Y SETTERS
     @property

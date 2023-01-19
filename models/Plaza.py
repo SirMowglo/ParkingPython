@@ -6,7 +6,7 @@ class Plaza:
             self.__tarifa = 0.12
         elif tipo == 'motocicleta':
             self.__tarifa = 0.08
-        elif tipo == 'm_reducida':
+        elif tipo == 'movilidad reducida':
             self.__tarifa = 0.10
         self.__ocupada = ocupada
         self.__abonado = abonado
@@ -61,7 +61,7 @@ class Plaza:
             tipo = 'T'
         elif self.__tipo == 'motocicleta':
             tipo = 'M'
-        elif self.__tipo == 'm_reducida':
+        elif self.__tipo == 'movilidad reducida':
             tipo = 'R'
         if self.__ocupada:
             oc = 'O'

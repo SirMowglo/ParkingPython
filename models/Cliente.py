@@ -9,3 +9,6 @@ class Cliente:
     @vehiculo.setter
     def vehiculo(self, vehiculo):
         self.__vehiculo = vehiculo
+
+    def __str__(self):
+        return f'Vehiculo del cliente: {self.__vehiculo.matricula}, Tipo: {self.__vehiculo.tipo}'
