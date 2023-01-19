@@ -1,7 +1,7 @@
 from models.Parking import Parking
 import pickle
 
-from subsistemas import ZonaClientes
+from subsistemas import ZonaClientes, ZonaAdmin
 
 
 def reset():
@@ -9,11 +9,13 @@ def reset():
     open("data/cliente.pickle", "w").close()
     open("data/abono.pickle", "w").close()
     open("data/abonado.pickle", "w").close()
+    open("data/cobros.pickle", "w").close()
 
     p = Parking(20)
     clientes = []
     abonos = []
     abonados = []
+    cobros = []
 
     parking_file = open("data/parking.pickle", "wb")
     pickle.dump(p, parking_file)
@@ -30,6 +32,10 @@ def reset():
     abonados_file = open("data/abonado.pickle", "wb")
     pickle.dump(abonados, abonados_file)
     abonados_file.close()
+
+    cobros_file = open("data/cobros.pickle", "wb")
+    pickle.dump(cobros, cobros_file)
+    cobros_file.close()
 
 def mainMethod():
     salir = False
@@ -51,28 +57,24 @@ def mainMethod():
                               '4. Retirar vehiculo de abonado\n'
                               'Otro. Salir\n')
             if opCliente == '1':
-                parking_file = open("data/parking.pickle", "rb")
-                parking = pickle.load(parking_file)
-                parking_file.close()
-
-                ZonaClientes.depositar_vehiculo(parking)
+                ZonaClientes.depositar_vehiculo()
+            if opCliente == '2':
+                ZonaClientes.retirar_vehiculo()
 
         elif entradaZona == '2':
-            if entradaZona == '1':
-                print('Estas en zona de clientes')
-                opAdmin = input('==================================================\n'
-                                'Que operacion quieres realizar?:\n'
-                                '1. Ver estado parking\n'
-                                '2. Ver facturacion entre fechas\n'
-                                '3. Consulta de abonados\n'
-                                '4. Gestionar abonos\n'
-                                '5.Ver caducidad abonos'
-                                'Otro. Salir\n')
-                if opAdmin == '1':
-                    parking_file = open("data/parking.pickle", "rb")
-                    parking = pickle.load(parking_file)
-                    parking_file.close()
-                    print(parking)
+            print('Estas en zona de clientes')
+            opAdmin = input('==================================================\n'
+                            'Que operacion quieres realizar?:\n'
+                            '1. Ver estado parking\n'
+                            '2. Ver facturacion entre fechas\n'
+                            '3. Consulta de abonados\n'
+                            '4. Gestionar abonos\n'
+                            '5.Ver caducidad abonos'
+                            'Otro. Salir\n')
+            if opAdmin == '1':
+                ZonaAdmin.consultar_estado_parking()
+            if opAdmin == '2':
+                ZonaAdmin.facturacion_entre_fechas()
 
         elif entradaZona == '3':
             reset()

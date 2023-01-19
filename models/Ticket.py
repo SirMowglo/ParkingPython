@@ -3,12 +3,11 @@ import random
 
 
 class Ticket:
-    def __init__(self, matricula, id_plaza):
+    def __init__(self, matricula, id_plaza, pin):
         self.__matricula = matricula
-        self.__f_deposito = datetime.datetime.now()\
-            .strftime("%Y-%m-%d / %H:%M:%S")
+        self.__f_deposito = datetime.datetime.now()
         self.__id_plaza = id_plaza
-        self.__pin = random.randint(100000, 999999)
+        self.__pin = str(pin)
 
 # GETTERS Y SETTERS
     @property
@@ -46,7 +45,7 @@ class Ticket:
 # METODOS
     def __str__(self):
         return '==================================================\n' \
-               f'FECHA = {self.f_deposito}\n' \
+               f'FECHA = {self.f_deposito.strftime("%Y-%m-%d / %H:%M:%S")}\n' \
                f'MATRICULA = {self.matricula}\n' \
                f'PLAZA = {self.id_plaza}\n' \
                f'PIN = {self.pin}\n' \
