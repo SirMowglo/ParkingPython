@@ -19,20 +19,23 @@ def depositar_vehiculo(parking: Parking):
     cl1 = Cliente(Vehiculo(mat, tip))
     plazasDisp = [plaza for plaza in parking.lista_plazas
                   if not plaza.ocupada and tip == plaza.tipo]
+    if len(plazasDisp) > 0:
+        plazasDisp[0].ocupada = True
+        ticket = Ticket(cl1.vehiculo.matricula, plazasDisp[0].id_plaza)
 
-    plazasDisp[0].ocupada = True
-    ticket = Ticket(cl1.vehiculo.matricula, plazasDisp[0].id_plaza)
+        cliente_file = open("data/cliente.pickle", "rb")
+        clientes = pickle.load(cliente_file)
 
-    cliente_file = open("data/cliente.pickle", "rb")
-    clientes = pickle.load(cliente_file)
+        clientes.append(cl1)
+        cliente_file = open("data/cliente.pickle", "wb")
+        pickle.dump(clientes, cliente_file)
+        cliente_file.close()
 
-    clientes.append(cl1)
-    cliente_file = open("data/cliente.pickle", "wb")
-    pickle.dump(clientes, cliente_file)
-    cliente_file.close()
+        parking_file = open("data/parking.pickle", "wb")
+        pickle.dump(parking, parking_file)
+        parking_file.close()
 
-    parking_file = open("data/parking.pickle", "wb")
-    pickle.dump(parking, parking_file)
-    parking_file.close()
-
-    print(ticket)
+        print(ticket)
+    else:
+        print('==================================================\n'
+              'No hay plazas disponibles')

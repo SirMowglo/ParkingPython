@@ -48,7 +48,8 @@ def mainMethod():
                               '1. Depositar vehiculo\n'
                               '2. Retirar vehiculo\n'
                               '3. Depositar vehiculo abonado\n'
-                              '4. Retirar vehiculo de abonado\n')
+                              '4. Retirar vehiculo de abonado\n'
+                              'Otro. Salir\n')
             if opCliente == '1':
                 parking_file = open("data/parking.pickle", "rb")
                 parking = pickle.load(parking_file)
@@ -65,7 +66,8 @@ def mainMethod():
                                 '2. Ver facturacion entre fechas\n'
                                 '3. Consulta de abonados\n'
                                 '4. Gestionar abonos\n'
-                                '5.Ver caducidad abonos')
+                                '5.Ver caducidad abonos'
+                                'Otro. Salir\n')
                 if opAdmin == '1':
                     parking_file = open("data/parking.pickle", "rb")
                     parking = pickle.load(parking_file)
