@@ -37,6 +37,7 @@ def reset():
     pickle.dump(cobros, cobros_file)
     cobros_file.close()
 
+
 def mainMethod():
     salir = False
 
@@ -60,6 +61,10 @@ def mainMethod():
                 ZonaClientes.depositar_vehiculo()
             if opCliente == '2':
                 ZonaClientes.retirar_vehiculo()
+            if opCliente == '3':
+                ZonaClientes.depositar_abonado()
+            if opCliente == '4':
+                ZonaClientes.retirar_abonado()
 
         elif entradaZona == '2':
             print('Estas en zona de clientes')
@@ -69,12 +74,16 @@ def mainMethod():
                             '2. Ver facturacion entre fechas\n'
                             '3. Consulta de abonados\n'
                             '4. Gestionar abonos\n'
-                            '5.Ver caducidad abonos'
+                            '5.Ver caducidad abonos\n'
                             'Otro. Salir\n')
             if opAdmin == '1':
                 ZonaAdmin.consultar_estado_parking()
             if opAdmin == '2':
                 ZonaAdmin.facturacion_entre_fechas()
+            if opAdmin == '3':
+                ZonaAdmin.consultar_abonos()
+            if opAdmin == '4':
+                ZonaAdmin.gestionar_abonos()
 
         elif entradaZona == '3':
             reset()
@@ -83,4 +92,5 @@ def mainMethod():
             salir = True
 
 
+# TODO Metodo que añada contenido para probar a los pickle
 mainMethod()
