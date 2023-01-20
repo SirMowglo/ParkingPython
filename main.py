@@ -84,6 +84,8 @@ def mainMethod():
                 ZonaAdmin.consultar_abonos()
             if opAdmin == '4':
                 ZonaAdmin.gestionar_abonos()
+            if opAdmin == '5':
+                ZonaAdmin.consultar_caducidad_abonos()
 
         elif entradaZona == '3':
             reset()
@@ -92,5 +94,4 @@ def mainMethod():
             salir = True
 
 
-# TODO Metodo que añada contenido para probar a los pickle
 mainMethod()

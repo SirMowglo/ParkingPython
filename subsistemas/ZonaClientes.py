@@ -139,6 +139,7 @@ def depositar_abonado():
     except:
         print('Se ha detectado un error con el dni')
 
+
 def retirar_abonado():
     parking_file = open("data/parking.pickle", "rb")
     parking = pickle.load(parking_file)
@@ -164,4 +165,3 @@ def retirar_abonado():
             print('Se ha salido de la plaza con exito')
         else:
             print('PIN erroneo')
-

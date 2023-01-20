@@ -66,7 +66,7 @@ def gestionar_abonos():
                       tipo_plaza == plaza.tipo and
                       plaza.abonado is None]
         if len(plazasDisp):
-            tipo_abono = input('Introduzca el tipo de abono que desea (mensual, trimestral, semestral, anual: ')
+            tipo_abono = input('Introduzca el tipo de abono que desea (mensual, trimestral, semestral, anual): ')
             if tipo_abono == 'mensual' or \
                     tipo_abono == 'trimestral' or \
                     tipo_abono == 'semestral' or \
@@ -228,3 +228,38 @@ def gestionar_abonos():
         else:
             print('El abonado con DNI aportado no existe')
 
+def consultar_caducidad_abonos():
+    abonos_file = open("data/abono.pickle", "rb")
+    abonos = pickle.load(abonos_file)
+    abonos_file.close()
+
+    op = input('==================================================\n'
+               'Que operacion quieres realizar?:\n'
+               '1. Consultar caducidad de un mes concreto\n'
+               '2. Consultar ultimos 10 dias\n'
+               'Otro. Salir\n')
+
+    if op == '1':
+        try:
+            mes = int(input('Introduce el mes en numero que deseas consultar: '))
+        except:
+            print('Mes no encontrado')
+        lista_abonos = [abono for abono in abonos if abono.f_cancelacion.month == mes]
+        if len(lista_abonos) > 0:
+            for abono in lista_abonos:
+                print(abono)
+        else:
+            print('No caduca ningun abono en ese mes')
+    elif op == '2':
+        dia_actual = datetime.datetime.now().strftime("%d")
+        dia_limite = (datetime.datetime.now() +datetime.timedelta(days=10)).strftime("%d")
+
+        lista_abonos = [abono for abono in abonos
+                        if dia_actual <= abono.f_cancelacion.strftime("%d") <= dia_limite]
+        if lista_abonos > 0:
+            for abono in lista_abonos:
+                print(abono)
+        else:
+            print('No caduca ningun abono en ese mes')
+    else:
+        print('Has salido del sistema')
