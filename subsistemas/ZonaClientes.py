@@ -149,19 +149,19 @@ def retirar_abonado():
     pin = input('Introduce el pin correspondiente: ')
 
     plazas = [plaza for plaza in parking.lista_plazas if plaza.abonado is not None]
+    print(plazas)
     if len(plazas) > 0:
-        try:
-            plaza = next(plaza for plaza in plazas
-                         if plaza.abonado.vehiculo.matricula == matr
-                         and plaza.id_plaza == id_plaza)
-            if plaza.abonado.abono.pin == pin:
-                plaza.ocupada = False
+        plaza = next(plaza for plaza in plazas
+                     if plaza.abonado.vehiculo.matricula == matr
+                     and str(plaza.id_plaza) == id_plaza
+                     )
+        if str(plaza.abonado.abono.pin) == pin:
+            plaza.ocupada = False
 
-                parking_file = open("data/parking.pickle", "wb")
-                pickle.dump(parking, parking_file)
-                parking_file.close()
-                print('Se ha salido de la plaza con exito')
-            else:
-                print('PIN erroneo')
-        except:
-            print('La matricula o la plaza son incorrectos')
+            parking_file = open("data/parking.pickle", "wb")
+            pickle.dump(parking, parking_file)
+            parking_file.close()
+            print('Se ha salido de la plaza con exito')
+        else:
+            print('PIN erroneo')
+
